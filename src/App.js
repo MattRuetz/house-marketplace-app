@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
 import Explore from './pages/Explore';
 import ForgotPassword from './pages/ForgotPassword';
@@ -6,7 +8,7 @@ import Offers from './pages/Offers';
 import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-
+import NotFound from './pages/NotFound';
 function App() {
     return (
         <>
@@ -21,9 +23,12 @@ function App() {
                         path="/forgot-password"
                         element={<ForgotPassword />}
                     ></Route>
+                    <Route path="/*" element={<NotFound />}></Route>
                 </Routes>
                 <Navbar />
             </Router>
+            {/* Toastify for styled alerts*/}
+            <ToastContainer />
         </>
     );
 }
