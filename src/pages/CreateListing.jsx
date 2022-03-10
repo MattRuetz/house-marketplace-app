@@ -6,6 +6,8 @@ import {
     uploadBytesResumable,
     getDownloadURL,
 } from 'firebase/storage';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase.config';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
@@ -175,17 +177,37 @@ function CreateListing() {
 
         // If all promises resolve, all images are uploaded to FB storage
         // Urls now stored in imageUrls
-        const imageUrls = await Promise.all(
+        const imgUrls = await Promise.all(
             [...images].map((image) => storeImage(image))
-        ).catch(() => {
+        ).catch((e) => {
+            console.log(e);
             setLoading(false);
             toast.error('Unable to upload image(s)');
             return;
         });
 
-        console.log(imageUrls);
+        // Wrap form data with image Urls, geoloc, and current time before storing to FS
+        const formDataCopy = {
+            ...formData,
+            imgUrls,
+            geolocation,
+            timestamp: serverTimestamp(),
+        };
+
+        delete formDataCopy.images; // dont need to store - use imageUrl to ref in Storage instead
+        delete formDataCopy.address; // in FS: location, lat, lng
+        location && (formDataCopy.location = location);
+        !formDataCopy.offer && delete formDataCopy.discountedPrice;
+
+        const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
 
         setLoading(false);
+
+        toast.success('Listing saved!');
+        console.log(
+            `redirecting to /category/${formDataCopy.type}/${docRef.id}`
+        );
+        navigate(`/category/${formDataCopy.type}/${docRef.id}`);
     };
 
     // Handle mutation to any form input
