@@ -9,18 +9,14 @@ import {
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { useNavigate } from 'react-router-dom';
-import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
-
-const API_URL = process.env.REACT_APP_GEOCODE_API_URL;
-const API_KEY = process.env.REACT_APP_GEOCODE_API_KEY;
-
-console.log(process.env);
+import Spinner from '../components/Spinner';
 
 function CreateListing() {
-    const [loading, setLoading] = useState(false);
+    // eslint-disable-next-line
     const [geolocationEnabled, setGeolocationEnabled] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         type: 'rent',
         name: '',
@@ -34,10 +30,9 @@ function CreateListing() {
         discountedPrice: 0,
         images: {},
         latitude: 0,
-        longitudde: 0,
+        longitude: 0,
     });
 
-    // Destructure formData
     const {
         type,
         name,
@@ -58,7 +53,6 @@ function CreateListing() {
     const navigate = useNavigate();
     const isMounted = useRef(true);
 
-    // Assure user is signed in. Ass UserID to formData to know who listed it
     useEffect(() => {
         if (isMounted) {
             onAuthStateChanged(auth, (user) => {
@@ -70,22 +64,26 @@ function CreateListing() {
             });
         }
 
-        return () => (isMounted.current = false);
+        return () => {
+            isMounted.current = false;
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted]);
 
-    // Handle new listing form submission
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        setLoading(true);
+
         if (discountedPrice >= regularPrice) {
             setLoading(false);
-            toast.error('Discounted price must be lower than regular price');
+            toast.error('Discounted price needs to be less than regular price');
             return;
         }
 
         if (images.length > 6) {
             setLoading(false);
-            toast.error('Maximum of 6 images');
+            toast.error('Max 6 images');
             return;
         }
 
@@ -94,13 +92,11 @@ function CreateListing() {
 
         if (geolocationEnabled) {
             const response = await fetch(
-                // .env variables
-                API_URL + `address=${address}&key=${API_KEY}`
+                `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
             );
 
             const data = await response.json();
 
-            // The ? after .results[0] assure WONT BREAK IF results[0]== NULL
             geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
             geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
 
@@ -111,7 +107,7 @@ function CreateListing() {
 
             if (location === undefined || location.includes('undefined')) {
                 setLoading(false);
-                toast.error('Please enter the correct address');
+                toast.error('Please enter a correct address');
                 return;
             }
         } else {
@@ -119,23 +115,20 @@ function CreateListing() {
             geolocation.lng = longitude;
         }
 
-        // Store images in firebase
-        // See: https://firebase.google.com/docs/storage/web/upload-files near bottom of page
+        // Store image in firebase
         const storeImage = async (image) => {
-            // Uploading is async task, return PROMISE
             return new Promise((resolve, reject) => {
                 const storage = getStorage();
                 const fileName = `${auth.currentUser.uid}-${
                     image.name
                 }-${uuidv4()}`;
+
+                console.log(fileName);
+
                 const storageRef = ref(storage, 'images/' + fileName);
-                // Create uploadTask
+
                 const uploadTask = uploadBytesResumable(storageRef, image);
 
-                // Register three observers:
-                // 1. 'state_changed' observer, called any time the state changes
-                // 2. Error observer, called on failure
-                // 3. Completion observer, called on successful completion
                 uploadTask.on(
                     'state_changed',
                     (snapshot) => {
@@ -143,7 +136,6 @@ function CreateListing() {
                             (snapshot.bytesTransferred / snapshot.totalBytes) *
                             100;
                         console.log('Upload is ' + progress + '% done');
-
                         switch (snapshot.state) {
                             case 'paused':
                                 console.log('Upload is paused');
@@ -152,18 +144,15 @@ function CreateListing() {
                                 console.log('Upload is running');
                                 break;
                             default:
-                                console.log(snapshot.state);
                                 break;
                         }
                     },
                     (error) => {
-                        // Handle unsuccessful uploads
-                        toast.error('Unable to upload image(s)');
-                        reject(error); // Promise rejected, callback with error
+                        reject(error);
                     },
                     () => {
-                        //Callback for COMPLETED UPLOAD
-                        // get the download URL: https://firebasestorage.googleapis.com/...
+                        // Handle successful uploads on complete
+                        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                         getDownloadURL(uploadTask.snapshot.ref).then(
                             (downloadURL) => {
                                 resolve(downloadURL);
@@ -174,18 +163,14 @@ function CreateListing() {
             });
         };
 
-        // If all promises resolve, all images are uploaded to FB storage
-        // Urls now stored in imageUrls
         const imgUrls = await Promise.all(
             [...images].map((image) => storeImage(image))
-        ).catch((e) => {
-            console.log(e);
+        ).catch(() => {
             setLoading(false);
-            toast.error('Unable to upload image(s)');
+            toast.error('Images not uploaded');
             return;
         });
 
-        // Wrap form data with image Urls, geoloc, and current time before storing to FS
         const formDataCopy = {
             ...formData,
             imgUrls,
@@ -193,44 +178,42 @@ function CreateListing() {
             timestamp: serverTimestamp(),
         };
 
-        formDataCopy.location = address; // Store address as entered by user
-        delete formDataCopy.images; // dont need to store - use imageUrl to ref in Storage instead
-        delete formDataCopy.address; // in FS: location, lat, lng
+        console.log(imgUrls);
+
+        formDataCopy.location = address;
+        delete formDataCopy.images;
+        delete formDataCopy.address;
         !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
         const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
-
         setLoading(false);
-
-        toast.success('Listing saved!');
-        console.log(
-            `redirecting to /category/${formDataCopy.type}/${docRef.id}`
-        );
+        toast.success('Listing saved');
         navigate(`/category/${formDataCopy.type}/${docRef.id}`);
     };
 
-    // Handle mutation to any form input
     const onMutate = (e) => {
         let boolean = null;
 
-        if (e.target.value === 'false') {
-            boolean = false;
-        }
         if (e.target.value === 'true') {
             boolean = true;
         }
+        if (e.target.value === 'false') {
+            boolean = false;
+        }
+
+        // Files
         if (e.target.files) {
-            // Files
             setFormData((prevState) => ({
                 ...prevState,
                 images: e.target.files,
             }));
         }
+
+        // Text/Booleans/Numbers
         if (!e.target.files) {
-            // Text, Bools, Nums
             setFormData((prevState) => ({
                 ...prevState,
-                [e.target.id]: boolean ?? e.target.value, // Set input's value to bool if not null, otherwise set to new target value
+                [e.target.id]: boolean ?? e.target.value,
             }));
         }
     };
@@ -450,7 +433,7 @@ function CreateListing() {
                             value={regularPrice}
                             onChange={onMutate}
                             min="50"
-                            max="1000000000"
+                            max="750000000"
                             required
                         />
                         {type === 'rent' && (
@@ -470,7 +453,7 @@ function CreateListing() {
                                 value={discountedPrice}
                                 onChange={onMutate}
                                 min="50"
-                                max="1000000000"
+                                max="750000000"
                                 required={offer}
                             />
                         </>
