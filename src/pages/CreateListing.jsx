@@ -117,7 +117,6 @@ function CreateListing() {
         } else {
             geolocation.lat = latitude;
             geolocation.lng = longitude;
-            location = address;
         }
 
         // Store images in firebase
@@ -194,9 +193,9 @@ function CreateListing() {
             timestamp: serverTimestamp(),
         };
 
+        formDataCopy.location = address; // Store address as entered by user
         delete formDataCopy.images; // dont need to store - use imageUrl to ref in Storage instead
         delete formDataCopy.address; // in FS: location, lat, lng
-        location && (formDataCopy.location = location);
         !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
         const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
