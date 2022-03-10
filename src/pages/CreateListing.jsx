@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
+import { toast } from 'react-toastify';
+
+const API_URL = process.env.REACT_APP_GEOCODE_API_URL;
+const API_KEY = process.env.REACT_APP_GEOCODE_API_KEY;
+
+console.log(process.env);
 
 function CreateListing() {
     const [loading, setLoading] = useState(false);
@@ -59,8 +65,53 @@ function CreateListing() {
         return () => (isMounted.current = false);
     }, [isMounted]);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
+
+        if (discountedPrice >= regularPrice) {
+            setLoading(false);
+            toast.error('Discounted price must be lower than regular price');
+            return;
+        }
+
+        if (images.length > 6) {
+            setLoading(false);
+            toast.error('Maximum of 6 images');
+            return;
+        }
+
+        let geolocation = {};
+        let location;
+
+        if (geolocationEnabled) {
+            const response = await fetch(
+                // .env variables
+                API_URL + `address=${address}&key=${API_KEY}`
+            );
+
+            const data = await response.json();
+
+            // The ? after .results[0] assure WONT BREAK IF results[0]== NULL
+            geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
+            geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
+
+            location =
+                data.status === 'ZERO_RESULTS'
+                    ? undefined
+                    : data.results[0]?.formatted_address;
+
+            if (location === undefined || location.includes('undefined')) {
+                setLoading(false);
+                toast.error('Please enter the correct address');
+                return;
+            }
+        } else {
+            geolocation.lat = latitude;
+            geolocation.lng = longitude;
+            location = address;
+        }
+
+        setLoading(false);
     };
 
     const onMutate = (e) => {
