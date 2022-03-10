@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp';
 import NotFound from './pages/NotFound';
 import Category from './pages/Category';
 import CreateListing from './pages/CreateListing';
+import Listing from './pages/Listing';
 
 function App() {
     return (
@@ -41,7 +42,13 @@ function App() {
                         path="/forgot-password"
                         element={<ForgotPassword />}
                     />
+                    {/* Create new Listing Page */}
                     <Route path="/create-listing" element={<CreateListing />} />
+                    {/* Show Single Listing Page */}
+                    <Route
+                        path="/category/:categoryName/:listingId"
+                        element={<Listing />}
+                    />
                     {/* Catch All -> 404 */}
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
