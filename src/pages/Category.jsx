@@ -62,7 +62,7 @@ function Category() {
                 <p className="pageHeader">
                     {params.categoryName === 'rent'
                         ? 'Places for Rent'
-                        : 'Placed for Sale'}
+                        : 'Places for Sale'}
                 </p>
             </header>
 
@@ -72,7 +72,6 @@ function Category() {
                 <>
                     <main>
                         <ul className="categoryListings">
-                            {/* Listing Components -- TODO */}
                             {listings.map((listing) => (
                                 <ListingItem
                                     listing={listing.data}
