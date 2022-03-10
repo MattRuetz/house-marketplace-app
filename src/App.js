@@ -13,6 +13,7 @@ import NotFound from './pages/NotFound';
 import Category from './pages/Category';
 import CreateListing from './pages/CreateListing';
 import Listing from './pages/Listing';
+import Contact from './pages/Contact';
 
 function App() {
     return (
@@ -49,6 +50,8 @@ function App() {
                         path="/category/:categoryName/:listingId"
                         element={<Listing />}
                     />
+                    {/* Contact/[Uid] Page */}
+                    <Route path="/contact/:landlordId" element={<Contact />} />
                     {/* Catch All -> 404 */}
                     <Route path="/*" element={<NotFound />} />
                 </Routes>

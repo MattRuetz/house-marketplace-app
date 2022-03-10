@@ -103,9 +103,20 @@ function Listing() {
                     </li>
                     {listing.parking && <li>Parking Spot ✔️</li>}
                     {listing.furnished && <li>Furnished ✔️</li>}
-
-                    {/* MAP */}
                 </ul>
+
+                <p className="listingLocationTitle">Location</p>
+                {/* MAP */}
+
+                {/* Show Contact button, if current user is not also the lister */}
+                {auth.currentUser?.uid !== listing.userRef && (
+                    <Link
+                        to={`/contact/${listing.userRef}?listingName=${listing.name}`}
+                        className="primaryButton"
+                    >
+                        Contact Landlord
+                    </Link>
+                )}
             </div>
         </main>
     );
