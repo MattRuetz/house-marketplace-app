@@ -10,26 +10,38 @@ import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import NotFound from './pages/NotFound';
+import Category from './pages/Category';
 
 function App() {
     return (
         <>
             <Router>
                 <Routes>
-                    <Route path="/" element={<Explore />}></Route>
-                    <Route path="/offers" element={<Offers />}></Route>
+                    {/* Home Page */}
+                    <Route path="/" element={<Explore />} />
+                    {/* Offers Page */}
+                    <Route path="/offers" element={<Offers />} />
+                    <Route
+                        path="/category/:categoryName"
+                        element={<Category />}
+                    />
+                    {/* Profile Page */}
                     <Route path="/profile" element={<PrivateRoute />}>
                         {/* This is <Outlet/> component of private route */}
                         {/* Only show if user is logged in, else go to /sign-in */}
-                        <Route path="/profile" element={<Profile />}></Route>
+                        <Route path="/profile" element={<Profile />} />
                     </Route>
-                    <Route path="/sign-in" element={<SignIn />}></Route>
-                    <Route path="/sign-up" element={<SignUp />}></Route>
+                    {/* Sign-in Page */}
+                    <Route path="/sign-in" element={<SignIn />} />
+                    {/* Sign-up Page */}
+                    <Route path="/sign-up" element={<SignUp />} />
+                    {/* Forgot Password Page */}
                     <Route
                         path="/forgot-password"
                         element={<ForgotPassword />}
-                    ></Route>
-                    <Route path="/*" element={<NotFound />}></Route>
+                    />
+                    {/* Catch All -> 404 */}
+                    <Route path="/*" element={<NotFound />} />
                 </Routes>
                 <Navbar />
             </Router>
