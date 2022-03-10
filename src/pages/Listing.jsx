@@ -30,7 +30,85 @@ function Listing() {
         fetchListing();
     }, [navigate, params.listingId]);
 
-    return <div>Listing</div>;
+    if (loading) {
+        return <Spinner />;
+    }
+
+    return (
+        <main>
+            {/* SLider */}
+
+            <div
+                className="shareIconDiv"
+                onClick={() => {
+                    // COPY TO CLIPBOARD
+                    navigator.clipboard.writeText(window.location.href);
+                    setShareLinkCopied(true);
+                    setTimeout(() => {
+                        setShareLinkCopied(false);
+                    }, 2000);
+                }}
+            >
+                <img src={shareIcon} alt="Share" />
+            </div>
+            {shareLinkCopied && <p className="linkCopied">Link Copied!</p>}
+
+            <div className="listingDetails">
+                <p className="listingName">
+                    {listing.name} -{' $'}
+                    {listing.offer
+                        ? listing.discountedPrice
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                        : listing.regularPrice
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                </p>
+
+                <p className="listingLocation">{listing.location}</p>
+                <p className="listingType">
+                    For {listing.type === 'rent' ? 'Rent' : 'Sale'}
+                </p>
+                {listing.offer && (
+                    <p className="discountPrice">
+                        $
+                        {(listing.regularPrice - listing.discountedPrice)
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
+                        discount
+                        <span style={{ color: 'lightgreen' }}>
+                            &nbsp;&nbsp;&nbsp;
+                            {(
+                                -(
+                                    listing.regularPrice /
+                                        listing.discountedPrice -
+                                    1
+                                ) * 100
+                            ).toFixed(2)}{' '}
+                            % off
+                        </span>
+                    </p>
+                )}
+
+                <ul className="listingDetailList">
+                    <li>
+                        {listing.bedrooms > 1
+                            ? `${listing.bedrooms} Bedrooms`
+                            : '1 Bedroom'}
+                    </li>
+                    <li>
+                        {listing.bathrooms > 1
+                            ? `${listing.bathrooms} Bathrooms`
+                            : '1 Bathroom'}
+                    </li>
+                    {listing.parking && <li>Parking Spot ✔️</li>}
+                    {listing.furnished && <li>Furnished ✔️</li>}
+
+                    {/* MAP */}
+                </ul>
+            </div>
+        </main>
+    );
 }
 
 export default Listing;
