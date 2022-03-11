@@ -14,6 +14,8 @@ import { toast } from 'react-toastify';
 import Spinner from '../components/Spinner';
 import ListingItem from '../components/ListingItem';
 
+const LISTINGS_FETCH_COUNT = 10;
+
 function Offers() {
     const [listings, setListings] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -31,7 +33,7 @@ function Offers() {
                     listingsRef,
                     where('offer', '==', true),
                     orderBy('timestamp', 'desc'),
-                    limit(10)
+                    limit(LISTINGS_FETCH_COUNT)
                 );
 
                 // Execute Query
@@ -71,7 +73,7 @@ function Offers() {
                 where('offer', '==', true),
                 orderBy('timestamp', 'desc'),
                 startAfter(lastFetchedListing),
-                limit(10)
+                limit(LISTINGS_FETCH_COUNT)
             );
 
             // Execute Query
@@ -122,11 +124,15 @@ function Offers() {
                     </main>
                     <br />
                     <br />
-                    {lastFetchedListing && (
-                        <p className="loadMore" onClick={onFetchMoreListings}>
-                            Load More
-                        </p>
-                    )}
+                    {lastFetchedListing &&
+                        listings.length === LISTINGS_FETCH_COUNT && (
+                            <p
+                                className="loadMore"
+                                onClick={onFetchMoreListings}
+                            >
+                                Load More
+                            </p>
+                        )}
                 </>
             ) : (
                 <p>There are no current offers.</p>

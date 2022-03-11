@@ -1,28 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap');
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #f2f4f8;
-  margin: 0;
-  box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f2f4f8;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='88' viewBox='0 0 80 88' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 21.91V26h-2c-9.94 0-18 8.06-18 18 0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73 3.212-6.99 9.983-12.008 18-12.73V62h2c9.94 0 18-8.06 18-18 0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73-3.212 6.99-9.983 12.008-18 12.73zM54 58v4.696c-5.574 1.316-10.455 4.428-14 8.69-3.545-4.262-8.426-7.374-14-8.69V58h-5.993C12.27 58 6 51.734 6 44c0-7.732 6.275-14 14.007-14H26v-4.696c5.574-1.316 10.455-4.428 14-8.69 3.545 4.262 8.426 7.374 14 8.69V30h5.993C67.73 30 74 36.266 74 44c0 7.732-6.275 14-14.007 14H54zM42 88c0-9.94 8.06-18 18-18h2v-4.09c8.016-.722 14.787-5.738 18-12.73v7.434c-3.545 4.262-8.426 7.374-14 8.69V74h-5.993C52.275 74 46 80.268 46 88h-4zm-4 0c0-9.943-8.058-18-18-18h-2v-4.09c-8.012-.722-14.785-5.738-18-12.73v7.434c3.545 4.262 8.426 7.374 14 8.69V74h5.993C27.73 74 34 80.266 34 88h4zm4-88c0 9.943 8.058 18 18 18h2v4.09c8.012.722 14.785 5.738 18 12.73v-7.434c-3.545-4.262-8.426-7.374-14-8.69V14h-5.993C52.27 14 46 7.734 46 0h-4zM0 34.82c3.213-6.992 9.984-12.008 18-12.73V18h2c9.94 0 18-8.06 18-18h-4c0 7.732-6.275 14-14.007 14H14v4.696c-5.574 1.316-10.455 4.428-14 8.69v7.433z' fill='%23d7dfce' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+    margin: 0;
+    box-sizing: border-box;
 }
 
 a {
-  text-decoration: none;
-  display: block;
-  color: #000000;
+    text-decoration: none;
+    display: block;
+    color: #000000;
 }
 
 button {
-  outline: none;
-  border: none;
+    outline: none;
+    border: none;
 }
 
 .input,
@@ -30,59 +31,69 @@ button {
 .emailInput,
 .nameInput,
 .textarea {
-  box-shadow: rgba(0, 0, 0, 0.11);
-  border: none;
-  background: #ffffff;
-  border-radius: 3rem;
-  height: 3rem;
-  width: 100%;
-  outline: none;
-  font-family: 'Montserrat', sans-serif;
-  padding: 0 3rem;
-  font-size: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.11);
+    border: none;
+    background: #ffffff;
+    border-radius: 3rem;
+    height: 3rem;
+    width: 100%;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 3rem;
+    font-size: 1rem;
 }
 @media (min-width: 1100px) {
-  .input,
-  .passwordInput,
-  .emailInput,
-  .nameInput,
-  .textarea {
-    padding: 0 5rem;
-  }
+    .input,
+    .passwordInput,
+    .emailInput,
+    .nameInput,
+    .textarea {
+        padding: 0 5rem;
+    }
 }
 
 .textarea {
-  padding: 1rem 1.5rem;
-  height: 300px;
-  border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    height: 300px;
+    border-radius: 1rem;
 }
 
 .primaryButton {
-  cursor: pointer;
-  background: #00cc66;
-  border-radius: 1rem;
-  padding: 0.85rem 2rem;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 1.25rem;
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    cursor: pointer;
+    background: #00cc66;
+    border-radius: 1rem;
+    padding: 0.85rem 2rem;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.25rem;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.removeIcon {
-  cursor: pointer;
-  position: absolute;
-  top: -3%;
-  right: -2%;
+.listingControls {
+    height: 100%;
+    left: -38px;
+    top: 20px;
+    position: absolute;
+}
+
+.listingControl {
+    cursor: pointer;
+    background: white;
+    border-radius: 50%;
+    padding: 4px;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.listingControl:active {
+    transform: translateY(2px);
+    box-shadow: none;
 }
 .editIcon {
-  cursor: pointer;
-  position: absolute;
-  top: -3.4%;
-  right: 20px;
 }
 
 .pageContainer,
@@ -91,572 +102,606 @@ button {
 .listingDetails,
 .category,
 .explore {
-  margin: 1rem;
+    margin: 1rem;
 }
 @media (min-width: 1024px) {
-  .pageContainer,
-  .offers,
-  .profile,
-  .listingDetails,
-  .category,
-  .explore {
-    margin: 3rem;
-  }
+    .pageContainer,
+    .offers,
+    .profile,
+    .listingDetails,
+    .category,
+    .explore {
+        margin: 3rem;
+    }
 }
 
 .loadingSpinnerContainer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .loadingSpinner {
-  width: 64px;
-  height: 64px;
-  border: 8px solid;
-  border-color: #00cc66 transparent #00cc66 transparent;
-  border-radius: 50%;
-  animation: spin 1.2s linear infinite;
+    width: 64px;
+    height: 64px;
+    border: 8px solid;
+    border-color: #00cc66 transparent #00cc66 transparent;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
 }
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .pageHeader {
-  font-size: 2rem;
-  font-weight: 800;
+    font-size: 2rem;
+    font-weight: 800;
 }
 
 .navbar {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 85px;
-  background-color: #ffffff;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 85px;
+    background-color: #ffffff;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .navbarNav {
-  width: 100%;
-  margin-top: 0.75rem;
-  overflow-y: hidden;
+    width: 100%;
+    margin-top: 0.75rem;
+    overflow-y: hidden;
 }
 
 .navbarListItems {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .navbarListItem {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .navbarListItemName,
 .navbarListItemNameActive {
-  margin-top: 0.25rem;
-  font-size: 14px;
-  font-weight: 600;
-  color: #8f8f8f;
+    margin-top: 0.25rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: #8f8f8f;
 }
 .navbarListItemNameActive {
-  color: #2c2c2c;
+    color: #2c2c2c;
 }
 
 .nameInput {
-  margin-bottom: 2rem;
-  background: url('./assets/svg/badgeIcon.svg') #ffffff 2.5% center no-repeat;
+    margin-bottom: 2rem;
+    background: url('./assets/svg/badgeIcon.svg') #ffffff 2.5% center no-repeat;
 }
 
 .emailInput {
-  margin-bottom: 2rem;
-  background: url('./assets/svg/personIcon.svg') #ffffff 2.5% center no-repeat;
+    margin-bottom: 2rem;
+    background: url('./assets/svg/personIcon.svg') #ffffff 2.5% center no-repeat;
 }
 
 .passwordInputDiv {
-  position: relative;
+    position: relative;
 }
 
 .passwordInput {
-  margin-bottom: 2rem;
-  background: url('./assets/svg/lockIcon.svg') #ffffff 2.5% center no-repeat;
+    margin-bottom: 2rem;
+    background: url('./assets/svg/lockIcon.svg') #ffffff 2.5% center no-repeat;
 }
 
 .showPassword {
-  cursor: pointer;
-  position: absolute;
-  top: -4%;
-  right: 1%;
-  padding: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: -4%;
+    right: 1%;
+    padding: 1rem;
 }
 
 .forgotPasswordLink {
-  cursor: pointer;
-  color: #00cc66;
-  font-weight: 600;
-  text-align: right;
+    cursor: pointer;
+    color: #00cc66;
+    font-weight: 600;
+    text-align: right;
 }
 
 .signInBar,
 .signUpBar {
-  margin-top: 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: inherit;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: inherit;
 }
 
 .signInButton,
 .signUpButton,
 .signInText,
 .signUpText {
-  cursor: pointer;
+    cursor: pointer;
 }
 @media (min-width: 1024px) {
-  .signInBar,
-  .signUpBar {
-    justify-content: start;
-  }
+    .signInBar,
+    .signUpBar {
+        justify-content: start;
+    }
 }
 
 .signInText,
 .signUpText {
-  font-size: 1.5rem;
-  font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .signInButton,
 .signUpButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 3rem;
-  height: 3rem;
-  background-color: #00cc66;
-  border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: #00cc66;
+    border-radius: 50%;
 }
 @media (min-width: 1024px) {
-  .signInButton,
-  .signUpButton {
-    margin-left: 3rem;
-  }
+    .signInButton,
+    .signUpButton {
+        margin-left: 3rem;
+    }
 }
 
 .socialLogin {
-  margin-top: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .socialIconDiv {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.75rem;
-  margin: 1.5rem;
-  width: 3rem;
-  height: 3rem;
-  background-color: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem;
+    margin: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 .socialIconImg {
-  width: 100%;
+    width: 100%;
 }
 
 .registerLink {
-  margin-top: 4rem;
-  color: #00cc66;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 3rem;
+    margin-top: 4rem;
+    color: #00cc66;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
 @media (min-width: 1217px) {
-  .explore {
-    margin-bottom: 10rem;
-  }
+    .explore {
+        margin-bottom: 10rem;
+    }
 }
 @media (max-height: 536) {
-  .explore {
-    margin-bottom: 10rem;
-  }
+    .explore {
+        margin-bottom: 10rem;
+    }
 }
 
 .exploreHeading,
 .exploreCategoryHeading {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .exploreCategoryHeading {
-  margin-top: 3rem;
+    margin-top: 3rem;
 }
 
 .swiper-container {
-  min-height: 225px;
-  height: 23vw;
+    min-height: 225px;
+    height: 23vw;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #ffffff !important;
+    background-color: #ffffff !important;
 }
 
 .swiperSlideDiv {
-  position: relative;
-  width: 100%;
-  height: 100%;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .swiperSlideImg {
-  width: 100%;
-  object-fit: cover;
+    width: 100%;
+    object-fit: cover;
 }
 
 .swiperSlideText {
-  color: #ffffff;
-  position: absolute;
-  top: 70px;
-  left: 0;
-  font-weight: 600;
-  max-width: 90%;
-  font-size: 1.25rem;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 0.5rem;
+    color: #ffffff;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    font-weight: 600;
+    max-width: 90%;
+    font-size: 1.25rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 0.5rem;
 }
 @media (min-width: 1024px) {
-  .swiperSlideText {
-    font-size: 1.75rem;
-  }
+    .swiperSlideText {
+        font-size: 1.75rem;
+    }
 }
 
 .swiperSlidePrice {
-  color: #000000;
-  position: absolute;
-  top: 143px;
-  left: 11px;
-  font-weight: 600;
-  max-width: 90%;
-  background-color: #ffffff;
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
+    color: #000000;
+    position: absolute;
+    top: 143px;
+    left: 11px;
+    font-weight: 600;
+    max-width: 90%;
+    background-color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
 }
 @media (min-width: 1024px) {
-  .swiperSlidePrice {
-    font-size: 1.25rem;
-  }
+    .swiperSlidePrice {
+        font-size: 1.25rem;
+    }
 }
 
 .exploreCategories {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
+
+.exploreCategories .flexCard {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 .exploreCategories a {
-  width: 48%;
+    width: 48%;
 }
 
 .exploreCategoryImg {
-  min-height: 115px;
-  height: 15vw;
-  width: 100%;
-  border-radius: 1.5rem;
-  object-fit: cover;
-  margin: 0 auto;
+    min-height: 115px;
+    height: 15vw;
+    width: 100%;
+    border-radius: 1.5rem;
+    object-fit: cover;
+    margin: 0 auto;
 }
 
 .exploreCategoryName {
-  font-weight: 500;
-  text-align: left;
+    font-weight: 500;
+    text-align: left;
 }
 
 .category {
-  margin-bottom: 10rem;
+    margin-bottom: 10rem;
 }
 
 .categoryListings {
-  padding: 0;
+    padding: 0;
 }
 
 .categoryListing {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 .categoryListingLink {
-  display: contents;
+    display: contents;
 }
 
 .categoryListingImg {
-  width: 30%;
-  height: 100px;
-  border-radius: 1.5rem;
-  object-fit: cover;
+    width: 30%;
+    height: 100px;
+    border-radius: 1.5rem;
+    object-fit: cover;
+    margin-right: 10px;
 }
 @media (min-width: 1024px) {
-  .categoryListingImg {
-    width: 19%;
-    height: 217px;
-  }
+    .categoryListingImg {
+        width: 19%;
+        height: 217px;
+    }
 }
 
 .categoryListingDetails {
-  width: 65%;
+    display: flex;
+    flex-direction: column;
 }
 @media (min-width: 1024px) {
-  .categoryListingDetails {
-    width: 79%;
-  }
+    .categoryListingDetails {
+        width: 79%;
+    }
 }
 
 .categoryListingLocation {
-  font-weight: 600;
-  font-size: 0.7rem;
-  opacity: 0.8;
-  margin-bottom: 0;
+    font-weight: 600;
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-bottom: 0;
 }
 
 .categoryListingName {
-  font-weight: 600;
-  font-size: 1.25rem;
-  margin: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 .categoryListingPrice {
-  margin-top: 0.5rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #00cc66;
-  margin-bottom: 0;
-  display: flex;
-  align-items: center;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #00cc66;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
 }
 
 .categoryListingInfoDiv {
-  display: flex;
-  justify-content: space-between;
-  max-width: 275px;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 275px;
 }
 
 .categoryListingInfoText {
-  font-weight: 500;
-  font-size: 0.7rem;
+    font-weight: 500;
+    font-size: 0.7rem;
+}
+
+.stat {
+    margin: 0 5px;
 }
 
 .loadMore {
-  cursor: pointer;
-  width: 8rem;
-  margin: 0 auto;
-  text-align: center;
-  padding: 0.25rem 0.5rem;
-  background-color: #000000;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 1rem;
-  opacity: 0.7;
-  margin-top: 2rem;
+    cursor: pointer;
+    width: 8rem;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 1rem;
+    opacity: 0.7;
+    margin-top: 2rem;
 }
 
 .listingDetails {
-  margin-bottom: 10rem;
+    margin-bottom: 10rem;
 }
 
 .shareIconDiv {
-  cursor: pointer;
-  position: fixed;
-  top: 3%;
-  right: 5%;
-  z-index: 2;
-  background-color: #ffffff;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    cursor: pointer;
+    position: fixed;
+    top: 3%;
+    right: 5%;
+    z-index: 2;
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .listingName {
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .listingLocation {
-  margin-top: 0;
-  font-weight: 600;
+    margin-top: 0;
+    font-weight: 600;
 }
 
 .discountPrice {
-  padding: 0.25rem 0.5rem;
-  background-color: #000000;
-  color: #ffffff;
-  border-radius: 1rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: inline;
+    padding: 0.25rem 0.5rem;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline;
 }
 
 .listingType {
-  padding: 0.25rem 0.5rem;
-  background-color: #00cc66;
-  color: #ffffff;
-  border-radius: 2rem;
-  display: inline;
-  font-weight: 600;
-  font-size: 0.8rem;
-  margin-right: 1rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #00cc66;
+    color: #ffffff;
+    border-radius: 2rem;
+    display: inline;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-right: 1rem;
 }
 
 .listingDetailsList {
-  padding: 0;
-  list-style-type: none;
+    padding: 0;
+    list-style-type: none;
 }
 .listingDetailsList li {
-  margin: 0.3rem 0;
-  font-weight: 500;
-  opacity: 0.8;
+    margin: 0.3rem 0;
+    font-weight: 500;
+    opacity: 0.8;
 }
 
 .listingLocationTitle {
-  margin-top: 2rem;
-  font-weight: 600;
-  font-size: 1.25rem;
+    margin-top: 2rem;
+    font-weight: 600;
+    font-size: 1.25rem;
 }
 
 .leafletContainer {
-  width: 100%;
-  height: 200px;
-  overflow-x: hidden;
-  margin-bottom: 3rem;
+    width: 100%;
+    height: 200px;
+    overflow-x: hidden;
+    margin-bottom: 3rem;
 }
 @media (min-width: 1024px) {
-  .leafletContainer {
-    height: 400px;
-  }
+    .leafletContainer {
+        height: 400px;
+    }
 }
 
 .linkCopied {
-  position: fixed;
-  top: 9%;
-  right: 5%;
-  z-index: 2;
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
+    position: fixed;
+    top: 9%;
+    right: 5%;
+    z-index: 2;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
 }
 
 .contactListingName {
-  margin-top: -1rem;
-  margin-bottom: 0;
-  font-weight: 600;
+    margin-top: -1rem;
+    margin-bottom: 0;
+    font-weight: 600;
 }
 
 .contactListingLocation {
-  margin-top: 0.25rem;
-  font-weight: 600;
+    margin-top: 0.25rem;
+    font-weight: 600;
 }
 
 .contactLandlord {
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
 }
 
 .landlordName {
-  font-weight: 600;
-  font-size: 1.2rem;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 .messageForm {
-  margin-top: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .messageDiv {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 4rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;
 }
 
 .messageLabel {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .profile {
-  margin-bottom: 10rem;
+    margin-bottom: 10rem;
 }
 
 .profileHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logOut {
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #00cc66;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #00cc66;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
 }
 
 .profileDetailsHeader {
-  display: flex;
-  justify-content: space-between;
-  max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
 }
 
 .personalDetailsText {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 .changePersonalDetails {
-  cursor: pointer;
-  font-weight: 600;
-  color: #00cc66;
+    cursor: pointer;
+    font-weight: 600;
+    color: #00cc66;
 }
 
 .profileCard {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.2);
-  max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+}
+
+.flexCard {
+    background-color: #ffffff;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 60%;
+}
+
+.flexCard .categoryListingImg {
+    min-width: 50%;
 }
 
 .profileDetails {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .profileName,
@@ -665,59 +710,59 @@ button {
 .profileAddressActive,
 .profileEmailActive,
 .profileNameActive {
-  all: unset;
-  margin: 0.3rem 0;
-  font-weight: 600;
-  width: 100%;
+    all: unset;
+    margin: 0.3rem 0;
+    font-weight: 600;
+    width: 100%;
 }
 .profileNameActive {
-  background-color: rgba(44, 44, 44, 0.1);
+    background-color: rgba(44, 44, 44, 0.1);
 }
 
 .profileEmail,
 .profileAddress,
 .profileAddressActive,
 .profileEmailActive {
-  font-weight: 500;
+    font-weight: 500;
 }
 .profileEmailActive {
-  background-color: rgba(44, 44, 44, 0.1);
+    background-color: rgba(44, 44, 44, 0.1);
 }
 
 .profileAddressActive {
-  background-color: rgba(44, 44, 44, 0.1);
+    background-color: rgba(44, 44, 44, 0.1);
 }
 
 .createListing {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 0.25rem 1rem;
-  box-shadow: rgba(0, 0, 0, 0.2);
-  margin-top: 2rem;
-  font-weight: 600;
-  max-width: 500px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 0.25rem 1rem;
+    box-shadow: rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+    font-weight: 600;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .listingText {
-  margin-top: 3rem;
-  font-weight: 600;
+    margin-top: 3rem;
+    font-weight: 600;
 }
 
 .lisitingsList {
-  padding: 0;
+    padding: 0;
 }
 
 .formLabel {
-  font-weight: 600;
-  margin-top: 1rem;
-  display: block;
+    font-weight: 600;
+    margin-top: 1rem;
+    display: block;
 }
 
 .formButtons {
-  display: flex;
+    display: flex;
 }
 
 .formButton,
@@ -727,23 +772,23 @@ button {
 .formInputSmall,
 .formInputFile,
 .formButtonActive {
-  padding: 0.9rem 3rem;
-  background-color: #ffffff;
-  font-weight: 600;
-  border-radius: 1rem;
-  font-size: 1rem;
-  margin: 0.5rem 0.5rem 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    padding: 0.9rem 3rem;
+    background-color: #ffffff;
+    font-weight: 600;
+    border-radius: 1rem;
+    font-size: 1rem;
+    margin: 0.5rem 0.5rem 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .formButtonActive {
-  background-color: #00cc66;
-  color: #ffffff;
+    background-color: #00cc66;
+    color: #ffffff;
 }
 
 .flex {
-  display: flex;
+    display: flex;
 }
 
 .formInput,
@@ -751,71 +796,110 @@ button {
 .formInputName,
 .formInputSmall,
 .formInputFile {
-  border: none;
-  outline: none;
-  font-family: 'Montserrat', sans-serif;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
 }
 .formInputSmall,
 .formInputFile {
-  margin-right: 3rem;
-  padding: 0.9rem 0.7rem;
-  text-align: center;
+    margin-right: 3rem;
+    padding: 0.9rem 0.7rem;
+    text-align: center;
 }
 
 .formInputName {
-  padding: 0.9rem 1rem;
-  width: 90%;
-  max-width: 326px;
+    padding: 0.9rem 1rem;
+    width: 90%;
+    max-width: 326px;
 }
 
 .formInputAddress {
-  padding: 0.9rem 1rem;
-  width: 90%;
-  max-width: 326px;
+    padding: 0.9rem 1rem;
+    width: 90%;
+    max-width: 326px;
 }
 
 .formPriceDiv {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .formPriceText {
-  margin-left: -1.5rem;
-  font-weight: 600;
+    margin-left: -1.5rem;
+    font-weight: 600;
 }
 
 .imagesInfo {
-  font-size: 0.9rem;
-  opacity: 0.75;
+    font-size: 0.9rem;
+    opacity: 0.75;
 }
 
 .formInputFile {
-  width: 100%;
+    width: 100%;
 }
 .formInputFile::-webkit-file-upload-button {
-  background-color: #00cc66;
-  border: none;
-  color: #ffffff;
-  font-weight: 600;
-  padding: 0.5rem 0.75rem;
-  border-radius: 1rem;
-  margin-right: 1rem;
+    background-color: #00cc66;
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
 }
 
 .createListingButton {
-  margin-top: 5rem;
+    margin-top: 5rem;
 }
 
 .offers {
-  margin-bottom: 10rem;
+    margin-bottom: 10rem;
 }
 
 .offerBadge {
-  padding: 0.25rem 0.5rem;
-  background-color: #000000;
-  color: #ffffff;
-  border-radius: 1rem;
-  margin-left: 1rem;
-  font-size: 0.8rem;
-  opacity: 0.75;
+    padding: 0.25rem 0.5rem;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 1rem;
+    margin-left: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.75;
+}
+
+/* ------------------- Media Queries ------------------- */
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width: 321px) {
+    /* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 500px) {
+    /* Styles */
+    .flexCard {
+        background-color: #ffffff;
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.2);
+    }
+
+    .flexCard .categoryListingImg {
+        margin-right: 1rem;
+        min-width: 35%;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* Styles */
 }
