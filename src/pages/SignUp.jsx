@@ -145,10 +145,9 @@ function SignUp() {
                         >
                             Forgot Password
                         </Link>
-
-                        <div className="signUpBar">
-                            <p className="signUpText">Sign Up</p>
-                            <button className="signUpButton">
+                        <div className="signInBar">
+                            <p className="signInText">Sign Up</p>
+                            <button className="signInButton">
                                 <ArrowRightIcon
                                     fill="#fff"
                                     width="34px"
@@ -158,9 +157,11 @@ function SignUp() {
                         </div>
                     </form>
                     <OAuth />
-                    <p>
+                    <p className="signInInsteadMsg">
                         Already have an account?
-                        <Link to="/sign-in">Sign In</Link>
+                        <Link to="/sign-in" className="signUpText">
+                            Sign In
+                        </Link>
                     </p>
                 </main>
             </div>
