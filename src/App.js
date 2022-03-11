@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp';
 import NotFound from './pages/NotFound';
 import Category from './pages/Category';
 import CreateListing from './pages/CreateListing';
+import EditListing from './pages/EditListing';
 import Listing from './pages/Listing';
 import Contact from './pages/Contact';
 
@@ -45,6 +46,11 @@ function App() {
                     />
                     {/* Create new Listing Page */}
                     <Route path="/create-listing" element={<CreateListing />} />
+                    {/* Edit Listing Page */}
+                    <Route
+                        path="/edit-listing/:listingId"
+                        element={<EditListing />}
+                    />
                     {/* Show Single Listing Page */}
                     <Route
                         path="/category/:categoryName/:listingId"
