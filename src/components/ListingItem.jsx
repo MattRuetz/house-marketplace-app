@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as DeleteIcon } from '../assets/svg/deleteIcon.svg';
 import { ReactComponent as EditIcon } from '../assets/svg/editIcon.svg';
 import bedIcon from '../assets/svg/bedIcon.svg';
 import bathtubIcon from '../assets/svg/bathtubIcon.svg';
 
 function ListingItem({ listing, id, onDelete, onEdit }) {
+    const loc = useLocation();
+
+    console.log(loc);
     return (
         <li className="categoryListing">
             <Link
@@ -55,25 +58,24 @@ function ListingItem({ listing, id, onDelete, onEdit }) {
                     </div>
                 </div>
             </Link>
-            <div className="listingControls">
-                <div className="listingControl">
-                    {onEdit && (
-                        <EditIcon
-                            className="editIcon"
-                            onClick={() => onEdit(id)}
-                        />
-                    )}
+            {loc.pathname === '/profile' && (
+                <div className="listingControls">
+                    <div className=" editIcon listingControl">
+                        {onEdit && <EditIcon onClick={() => onEdit(id)} />}
+                    </div>
+                    <hr />
+                    <div className=" removeIcon listingControl">
+                        {onDelete && (
+                            <DeleteIcon
+                                fill="rgb(230, 75, 60)"
+                                onClick={() =>
+                                    onDelete(listing.id, listing.name)
+                                }
+                            />
+                        )}
+                    </div>
                 </div>
-                <div className="listingControl">
-                    {onDelete && (
-                        <DeleteIcon
-                            className="removeIcon"
-                            fill="rgb(230, 75, 60)"
-                            onClick={() => onDelete(listing.id, listing.name)}
-                        />
-                    )}
-                </div>
-            </div>
+            )}
         </li>
     );
 }
