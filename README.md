@@ -2,7 +2,7 @@
 ## Post and browse realty listings
 
 ## Browse Listings
-When opening the app, the landing page appears, where the user may swipe through suggested listings at thw top, or click "Rent" or "Sale" buttons to view the respective listings.
+When opening the app, the landing page appears, where the user may swipe through suggested listings at the top, or click "Rent" or "Sale" buttons to view the respective listings.
 
 ## Profile
 Creating a profile allows user to add their own listings to the site. Authentication is done with Google OAuth, and user data is managed with Firebase.
